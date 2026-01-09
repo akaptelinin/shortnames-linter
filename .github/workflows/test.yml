@@ -30,6 +30,12 @@ jobs:
             exit 1
           fi
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.out
+
       - name: Build
         run: go build -o shortnames .
 

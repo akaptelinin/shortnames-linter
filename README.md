@@ -1,6 +1,7 @@
 # shortnames-linter
 
 [![Tests](https://github.com/akaptelinin/shortnames-linter/actions/workflows/test.yml/badge.svg)](https://github.com/akaptelinin/shortnames-linter/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/akaptelinin/shortnames-linter/graph/badge.svg)](https://codecov.io/gh/akaptelinin/shortnames-linter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Go linter that warns about short identifier names (<3 chars) to improve code readability.
