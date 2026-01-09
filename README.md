@@ -6,6 +6,38 @@
 
 Go linter that warns about short identifier names (<3 chars) to improve code readability.
 
+## Why no "scope distance"?
+
+Some linters allow short names if a variable is used within N lines ("scope distance"). We don't.
+
+```go
+// Other linters: "scope distance = 5, looks good!"
+func handler(c *gin.Context) {
+    u, err := getUser(c)        // line 1: ok, remembering u=user
+    if err != nil {             // line 2: thinking about err now
+        c.JSON(500, err)        // line 3: wait, what's c again?
+        return                  // line 4
+    }
+    c.JSON(200, u)              // line 5: what's u? ah, user...
+}
+```
+
+**5 lines is a lot.** It's a DB query, error check, response, logging. Your brain doesn't cache single-letter variables across `if` statements and function calls.
+
+```go
+// shortnames-linter: "no. just no."
+func handler(ctx *gin.Context) {
+    user, err := getUser(ctx)
+    if err != nil {
+        ctx.JSON(500, err)
+        return
+    }
+    ctx.JSON(200, user)         // instantly readable
+}
+```
+
+**Every short name = mental lookup.** We optimize for readers, not writers.
+
 ## What it checks
 
 | Check | Example bad | Example good |
