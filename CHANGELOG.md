@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Short parameter names (<3 chars)
   - Short import aliases (<3 chars)
   - Short named return values (<3 chars)
-- Default whitelist: `err`, `ok`, `ctx`, `i`, `j`, `k`, `n`, `id`, `ip`, `db`, `tx`, `mu`, `wg`, `rw`, `fn`, `cb`, `ch`, `v`
+- Default whitelist: `err`, `ok`, `ctx`, `i`, `j`, `k`, `n`, `id`, `ip`, `db`, `tx`, `mu`, `wg`, `rw`, `fn`, `cb`, `ch`, `v`, `t`, `b`
 - Custom whitelist via `--whitelist` flag
 - Standalone binary and golangci-lint plugin support
 - Comprehensive test coverage (~25 cases)

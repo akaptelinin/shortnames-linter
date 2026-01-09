@@ -28,6 +28,8 @@ var defaultWhitelist = map[string]bool{
 	"cb":  true,
 	"ch":  true,
 	"v":   true,
+	"t":   true,
+	"b":   true,
 }
 
 var userWhitelist = make(map[string]bool)

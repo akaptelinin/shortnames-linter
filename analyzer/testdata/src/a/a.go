@@ -8,8 +8,8 @@ import (
 
 type Handler struct{}
 
-func (h *Handler) Bad(a x.Context, b *y.Request) error { // want `receiver name "h" is too short` `parameter name "a" is too short` `parameter name "b" is too short`
-	fmt.Println(h, a, b)
+func (h *Handler) Bad(a x.Context, r *y.Request) error { // want `receiver name "h" is too short` `parameter name "a" is too short` `parameter name "r" is too short`
+	fmt.Println(h, a, r)
 	return nil
 }
 

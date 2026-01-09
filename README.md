@@ -18,7 +18,7 @@ Go linter that warns about short identifier names (<3 chars) to improve code rea
 
 These short names are allowed by default:
 
-`err`, `ok`, `ctx`, `i`, `j`, `k`, `n`, `id`, `ip`, `db`, `tx`, `mu`, `wg`, `rw`, `fn`, `cb`, `ch`, `v`
+`err`, `ok`, `ctx`, `i`, `j`, `k`, `n`, `id`, `ip`, `db`, `tx`, `mu`, `wg`, `rw`, `fn`, `cb`, `ch`, `v`, `t`, `b`
 
 ## Installation
 

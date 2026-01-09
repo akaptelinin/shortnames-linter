@@ -11,8 +11,8 @@ func noReceiver(name string) {}
 
 func anonymousParams(string, int) {}
 
-func mixedParams(a int, name string, b int) { // want `parameter name "a" is too short` `parameter name "b" is too short`
-	fmt.Println(a, name, b)
+func mixedParams(a int, name string, z int) { // want `parameter name "a" is too short` `parameter name "z" is too short`
+	fmt.Println(a, name, z)
 }
 
 func exactlyThreeChars(abc string, def int) {
@@ -23,8 +23,8 @@ func twoCharsNotWhitelisted(ab string) { // want `parameter name "ab" is too sho
 	fmt.Println(ab)
 }
 
-func whitelistedNames(i, j, k int, ctx, err, ok, id, db, tx, mu, wg, ch, fn, cb, rw, ip, v, n interface{}) {
-	fmt.Println(i, j, k, ctx, err, ok, id, db, tx, mu, wg, ch, fn, cb, rw, ip, v, n)
+func whitelistedNames(i, j, k int, ctx, err, ok, id, db, tx, mu, wg, ch, fn, cb, rw, ip, v, n, t, b interface{}) {
+	fmt.Println(i, j, k, ctx, err, ok, id, db, tx, mu, wg, ch, fn, cb, rw, ip, v, n, t, b)
 }
 
 func (s *Server) pointerReceiver() { // want `receiver name "s" is too short`
@@ -51,7 +51,7 @@ func variadicOk(args ...int) {
 	fmt.Println(args)
 }
 
-func multiReturn() (a, b int) { // want `named return "a" is too short` `named return "b" is too short`
+func multiReturn() (a, z int) { // want `named return "a" is too short` `named return "z" is too short`
 	return 1, 2
 }
 
@@ -89,8 +89,8 @@ type GoodProcessor interface {
 	Handle(request Request)
 }
 
-func genericFunc[T any](t T) { // want `parameter name "t" is too short`
-	fmt.Println(t)
+func genericFunc[T any](x T) { // want `parameter name "x" is too short`
+	fmt.Println(x)
 }
 
 func goodGenericFunc[T any](value T) {
@@ -101,8 +101,8 @@ type GenericType[T any] struct {
 	value T
 }
 
-func (g *GenericType[T]) Method(t T) { // want `receiver name "g" is too short` `parameter name "t" is too short`
-	fmt.Println(g.value, t)
+func (g *GenericType[T]) Method(x T) { // want `receiver name "g" is too short` `parameter name "x" is too short`
+	fmt.Println(g.value, x)
 }
 
 func (gtype *GenericType[T]) GoodMethod(item T) {
