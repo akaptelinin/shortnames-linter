@@ -69,6 +69,9 @@ func parseUserWhitelist() {
 }
 
 func isWhitelisted(name string) bool {
+	if name == "_" {
+		return true
+	}
 	if len(name) >= minNameLength {
 		return true
 	}
