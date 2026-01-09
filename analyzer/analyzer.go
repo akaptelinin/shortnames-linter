@@ -41,8 +41,9 @@ var Analyzer = &analysis.Analyzer{
 }
 
 var (
-	flagWhitelist string
-	flagSeverity  string
+	flagWhitelist        string
+	flagSeverity         string
+	flagDisableDefault   bool
 )
 
 func init() {
@@ -50,6 +51,8 @@ func init() {
 		"comma-separated list of additional allowed short names")
 	Analyzer.Flags.StringVar(&flagSeverity, "severity", "warning",
 		"severity level: warning or error")
+	Analyzer.Flags.BoolVar(&flagDisableDefault, "disable-default-whitelist", false,
+		"disable the default whitelist, only use custom whitelist")
 }
 
 func parseUserWhitelist() {
@@ -68,7 +71,7 @@ func isWhitelisted(name string) bool {
 	if len(name) >= minNameLength {
 		return true
 	}
-	if defaultWhitelist[name] {
+	if !flagDisableDefault && defaultWhitelist[name] {
 		return true
 	}
 	if userWhitelist[name] {

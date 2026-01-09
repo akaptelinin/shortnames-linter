@@ -58,10 +58,12 @@ linters:
 |------|---------|-------------|
 | `-whitelist` | (empty) | Comma-separated additional allowed names |
 | `-severity` | warning | `warning` or `error` |
+| `-disable-default-whitelist` | false | Disable default whitelist, only use custom |
 
 Example:
 ```bash
 shortnames -whitelist="io,fs,tt" ./...
+shortnames -disable-default-whitelist ./...
 ```
 
 ## Example output

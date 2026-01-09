@@ -21,4 +21,15 @@ func TestWhitelist(t *testing.T) {
 		t.Fatal(err)
 	}
 	analysistest.Run(t, testdata, a, "whitelist")
+	_ = a.Flags.Set("whitelist", "")
+}
+
+func TestDisableDefaultWhitelist(t *testing.T) {
+	testdata := filepath.Join(os.Getenv("PWD"), "testdata")
+	a := analyzer.Analyzer
+	if err := a.Flags.Set("disable-default-whitelist", "true"); err != nil {
+		t.Fatal(err)
+	}
+	analysistest.Run(t, testdata, a, "nodefault")
+	_ = a.Flags.Set("disable-default-whitelist", "false")
 }
