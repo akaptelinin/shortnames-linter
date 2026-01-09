@@ -6,6 +6,12 @@
 
 Go linter that warns about short identifier names (<3 chars) to improve code readability.
 
+## Why?
+
+Why did you decide that single-letter names are correct? Is typing a paid feature on your keyboard? You think >2 letter variables are too long for Go, which is famously known for being as compact as possible?
+
+Anyway, this plugin fixes goslop for you.
+
 ## Why no "scope distance"?
 
 Some linters allow short names if a variable is used within N lines ("scope distance"). We don't.
