@@ -22,3 +22,6 @@ jobs:
 
       - name: Build
         run: go build -o shortnames .
+
+      - name: Self-lint
+        run: ./shortnames ./...
