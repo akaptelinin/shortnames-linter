@@ -56,6 +56,7 @@ func init() {
 }
 
 func parseUserWhitelist() {
+	userWhitelist = make(map[string]bool)
 	if flagWhitelist == "" {
 		return
 	}

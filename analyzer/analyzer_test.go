@@ -47,3 +47,43 @@ func TestDisableDefaultWithCustomWhitelist(t *testing.T) {
 	_ = a.Flags.Set("disable-default-whitelist", "false")
 	_ = a.Flags.Set("whitelist", "")
 }
+
+func TestWhitelistWithSpaces(t *testing.T) {
+	testdata := filepath.Join(os.Getenv("PWD"), "testdata")
+	a := analyzer.Analyzer
+	if err := a.Flags.Set("whitelist", " ab , xy "); err != nil {
+		t.Fatal(err)
+	}
+	analysistest.Run(t, testdata, a, "whitelist_edge")
+	_ = a.Flags.Set("whitelist", "")
+}
+
+func TestWhitelistWithEmptyValues(t *testing.T) {
+	testdata := filepath.Join(os.Getenv("PWD"), "testdata")
+	a := analyzer.Analyzer
+	if err := a.Flags.Set("whitelist", "ab,,xy"); err != nil {
+		t.Fatal(err)
+	}
+	analysistest.Run(t, testdata, a, "whitelist_edge")
+	_ = a.Flags.Set("whitelist", "")
+}
+
+func TestWhitelistWithTrailingComma(t *testing.T) {
+	testdata := filepath.Join(os.Getenv("PWD"), "testdata")
+	a := analyzer.Analyzer
+	if err := a.Flags.Set("whitelist", "ab,xy,"); err != nil {
+		t.Fatal(err)
+	}
+	analysistest.Run(t, testdata, a, "whitelist_edge")
+	_ = a.Flags.Set("whitelist", "")
+}
+
+func TestWhitelistRedundantWithDefault(t *testing.T) {
+	testdata := filepath.Join(os.Getenv("PWD"), "testdata")
+	a := analyzer.Analyzer
+	if err := a.Flags.Set("whitelist", "i,ok,err"); err != nil {
+		t.Fatal(err)
+	}
+	analysistest.Run(t, testdata, a, "a")
+	_ = a.Flags.Set("whitelist", "")
+}
