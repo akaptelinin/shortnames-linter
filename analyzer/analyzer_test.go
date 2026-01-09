@@ -13,3 +13,12 @@ func TestAnalyzer(t *testing.T) {
 	testdata := filepath.Join(os.Getenv("PWD"), "testdata")
 	analysistest.Run(t, testdata, analyzer.Analyzer, "a")
 }
+
+func TestWhitelist(t *testing.T) {
+	testdata := filepath.Join(os.Getenv("PWD"), "testdata")
+	a := analyzer.Analyzer
+	if err := a.Flags.Set("whitelist", "ab,xy"); err != nil {
+		t.Fatal(err)
+	}
+	analysistest.Run(t, testdata, a, "whitelist")
+}
