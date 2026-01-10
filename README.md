@@ -44,7 +44,7 @@ func handler(ctx *gin.Context) {
 
 **Every short name = mental lookup.** We optimize for readers, not writers.
 
-Also: your monitor might scroll the function header off-screen while you might be eating a burger 🍔. You might be reviewing a PR at 11pm, drunk. In all these cases, `user.Process(ctx)` saves you,  `u.P(c)` — does not.
+Also: your monitor might scroll the function header off-screen while you might be eating a burger 🍔. You might be reviewing a PR at 11pm, drunk. In all these cases, `uploader.Process(config)` saves you,  `u.P(c)` — does not.
 
 ## What it checks
 
